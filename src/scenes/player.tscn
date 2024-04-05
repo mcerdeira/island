@@ -1,0 +1,148 @@
+[gd_scene load_steps=19 format=3 uid="uid://evskswf05b50"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
+[ext_resource type="Texture2D" uid="uid://b38o2srmku3ak" path="res://sprites/player_idle_spr_0.png" id="2_slkgy"]
+[ext_resource type="Texture2D" uid="uid://clhpax8hafjpy" path="res://sprites/player_attack_spr_0.png" id="2_yvl64"]
+[ext_resource type="Texture2D" uid="uid://bt5kedgetvrql" path="res://sprites/player_idle_spr_1.png" id="3_r2lg5"]
+[ext_resource type="Texture2D" uid="uid://ch855svuwnmte" path="res://sprites/player_attack_spr_1.png" id="3_ym6yd"]
+[ext_resource type="Texture2D" uid="uid://btlnaquud2rf" path="res://sprites/player_run_spr_0.png" id="4_7pu30"]
+[ext_resource type="Texture2D" uid="uid://ccjfarp3k71ws" path="res://sprites/player_attack_spr_2.png" id="4_q0b7f"]
+[ext_resource type="Texture2D" uid="uid://c822gb78punns" path="res://sprites/player_run_spr_1.png" id="5_2tb6g"]
+[ext_resource type="Texture2D" uid="uid://dp1u3hj06nnbj" path="res://sprites/player_dead_spr_0.png" id="5_hk1sk"]
+[ext_resource type="Texture2D" uid="uid://do5by5ou081mw" path="res://sprites/player_run_spr_2.png" id="6_jgr6m"]
+[ext_resource type="Texture2D" uid="uid://cq6uesmr0qaw6" path="res://sprites/player_eyes_spr_0.png" id="11_dgot3"]
+[ext_resource type="Texture2D" uid="uid://c3plt5e74esdy" path="res://sprites/player_eyes_dead_spr_0.png" id="11_wmv3t"]
+[ext_resource type="Texture2D" uid="uid://b77ncnki4yubf" path="res://sprites/player_eyes_spr_1.png" id="12_0kcif"]
+[ext_resource type="Texture2D" uid="uid://dkl3erq7xuvyd" path="res://sprites/player_eyes_eat_spr_0.png" id="12_b26yd"]
+[ext_resource type="Texture2D" uid="uid://c4pay8u1tabek" path="res://sprites/player_eyes_eat_spr_1.png" id="13_nw84e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18lep"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eqtew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yvl64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ym6yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q0b7f")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hk1sk")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_slkgy")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_slkgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r2lg5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7pu30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2tb6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jgr6m")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27s3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wmv3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b26yd")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_b26yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nw84e")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_dgot3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0kcif")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_dgot3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0kcif")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_u3t4v")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="area"]
+shape = SubResource("RectangleShape2D_18lep")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eqtew")
+animation = &"attack"
+
+[node name="eyes" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_27s3t")
+animation = &"eat"
+frame_progress = 0.999775
+
+[connection signal="animation_looped" from="sprite" to="." method="_on_sprite_animation_looped"]
