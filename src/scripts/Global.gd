@@ -5,6 +5,7 @@ var SAVED_GAME = false
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
+var shaker_obj = null
 
 func save_game():
 	pass
