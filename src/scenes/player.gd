@@ -1,6 +1,7 @@
-extends Node2D
-var walk_speed = 160
-var attacking = false
+extends CharacterBody2D
+var walk_speed = 300
+var click_position = null
+var target_position = Vector2(0, 0)
 
 func set_dead():
 	$sprite.speed_scale = 0
@@ -31,47 +32,30 @@ func set_animation(anim):
 func _ready():
 	add_to_group("players")
 	set_idle()
+	Global.PLAYER = self
 	
 func _physics_process(delta):
-	var left = Input.is_action_pressed("left")
-	var right = Input.is_action_pressed("right")
-	var up = Input.is_action_pressed("up")
-	var down = Input.is_action_pressed("down")
-	var action = Input.is_action_pressed("action")
-	var moving = left or right or up or down
-	
-	if !attacking and action:
-		attacking = true
-		set_attack()
-		
-	if attacking:
-		left = false
-		right = false
-		up = false
-		down = false
-		moving = false
-	
-	if left:
-		position.x -= walk_speed * delta
-		$sprite.scale.x = -1
-		$eyes.scale.x = -1
-		
-	elif right:
-		position.x += walk_speed * delta
-		$sprite.scale.x = 1
-		$eyes.scale.x = 1
-
-	if up:
-		position.y -= walk_speed * delta
-	elif down:
-		position.y += walk_speed * delta
-		
-	if !attacking:
-		if moving:
-			set_run()
+	var click = Input.is_action_just_pressed("click")
+	var moving = click
+	if click:
+		click_position = get_global_mouse_position()
+		if position.x > click_position.x:
+			$sprite.scale.x = -1
+			$eyes.scale.x = -1
 		else:
-			set_idle()
+			$sprite.scale.x = 1
+			$eyes.scale.x = 1
+		
+	if click_position != null and position.distance_to(click_position) > 3:
+		moving = true
+		target_position = (click_position - position).normalized()
+		velocity = target_position * walk_speed
+		move_and_slide()
+		
+	if moving:
+		set_run()
+	else:
+		set_idle()
 
 func _on_sprite_animation_looped():
-	if attacking:
-		attacking = false
+	pass

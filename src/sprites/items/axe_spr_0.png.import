@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpfvhv4sjhqkq"
-path="res://.godot/imported/electric_attack.png-3df9b1644959b3469cadca83b1439ff3.ctex"
+uid="uid://de42r4qctsuv3"
+path="res://.godot/imported/axe_spr_0.png-0fedd00c265a1441488e0bc4ae061e12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/electric_attack.png"
-dest_files=["res://.godot/imported/electric_attack.png-3df9b1644959b3469cadca83b1439ff3.ctex"]
+source_file="res://sprites/items/axe_spr_0.png"
+dest_files=["res://.godot/imported/axe_spr_0.png-0fedd00c265a1441488e0bc4ae061e12.ctex"]
 
 [params]
 

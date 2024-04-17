@@ -1,11 +1,34 @@
 extends Node
 var FULLSCREEN = false
 var SAVED_GAME = false
-
+var PLAYER = null
+var ITEMS = []
 var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var shaker_obj = null
+
+var apple = {
+	"name": "apple",
+	"description": "Apple",
+	"long_description": "Tasty apple",
+	"price": 400,
+	"type": "food",
+	"action": "Eat"
+}
+
+var axe = {
+	"name": "axe",
+	"description": "Axe",
+	"long_description": "Sharp Axe",
+	"price": 400,
+	"type": "weapon",
+	"action": "Equip"
+}
+
+func init_game():
+	ITEMS.push_back(apple)
+	ITEMS.push_back(axe)
 
 func save_game():
 	pass
@@ -36,6 +59,7 @@ func load_game():
 #			saved_poss.close()
 
 func _ready():
+	init_game()
 	load_sfx()
 	load_game()
 	

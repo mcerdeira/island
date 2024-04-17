@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv7vx5arqc14"]
+
+[ext_resource type="Script" path="res://scenes/Item.gd" id="1_egtkc"]
+[ext_resource type="Shader" path="res://scenes/Item.gdshader" id="2_jk7w2"]
+[ext_resource type="Texture2D" uid="uid://cy1i7ba6bi4l4" path="res://sprites/items/apple_spr_0.png" id="2_qlldu"]
+[ext_resource type="Texture2D" uid="uid://de42r4qctsuv3" path="res://sprites/items/axe_spr_0.png" id="4_o8pxt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ech7p"]
+radius = 28.1603
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8pfc"]
+shader = ExtResource("2_jk7w2")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.01
+shader_parameter/white = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b482i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qlldu")
+}],
+"loop": true,
+"name": &"apple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o8pxt")
+}],
+"loop": true,
+"name": &"axe",
+"speed": 5.0
+}]
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_egtkc")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ech7p")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_q8pfc")
+sprite_frames = SubResource("SpriteFrames_b482i")
+animation = &"axe"
+
+[node name="MenuSel" type="ItemList" parent="."]
+process_mode = 3
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 166.0
+offset_bottom = 88.0
+allow_search = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="item_clicked" from="MenuSel" to="." method="_on_menu_sel_item_clicked"]

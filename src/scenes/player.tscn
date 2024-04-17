@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://evskswf05b50"]
+[gd_scene load_steps=20 format=3 uid="uid://evskswf05b50"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_u3t4v"]
+[ext_resource type="Script" path="res://scenes/player_area.gd" id="2_28347"]
 [ext_resource type="Texture2D" uid="uid://b38o2srmku3ak" path="res://sprites/player_idle_spr_0.png" id="2_slkgy"]
 [ext_resource type="Texture2D" uid="uid://clhpax8hafjpy" path="res://sprites/player_attack_spr_0.png" id="2_yvl64"]
 [ext_resource type="Texture2D" uid="uid://bt5kedgetvrql" path="res://sprites/player_idle_spr_1.png" id="3_r2lg5"]
@@ -128,10 +129,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u3t4v")
 
 [node name="area" type="Area2D" parent="."]
+script = ExtResource("2_28347")
 
 [node name="collider" type="CollisionShape2D" parent="area"]
 shape = SubResource("RectangleShape2D_18lep")
