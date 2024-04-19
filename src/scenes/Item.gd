@@ -31,10 +31,14 @@ func _on_menu_sel_item_clicked(index, at_position, mouse_button_index):
 	do_action(index)
 	
 func do_action(index):
-	if index == 0:
+	if index == 0: #Use
 		queue_free()
-	elif index == 1:
-		queue_free()
+	elif index == 1: #Inventory
+		if Global.add_to_inventory(this_item):
+			Global.INV_Object.refresh()
+			queue_free()
+		else:
+			pass #Notificar que no hay más espacio 	
 	elif index == 2:
 		pass
 

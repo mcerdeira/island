@@ -1,0 +1,220 @@
+[gd_scene load_steps=7 format=3 uid="uid://bihkfvj5sat3q"]
+
+[ext_resource type="Script" path="res://scenes/inventory.gd" id="1_o4u77"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="1_t3rb1"]
+[ext_resource type="Texture2D" uid="uid://c2tccrt86ly2u" path="res://sprites/craftslot.png" id="3_jdqtc"]
+[ext_resource type="Texture2D" uid="uid://cy1i7ba6bi4l4" path="res://sprites/items/apple_spr_0.png" id="4_yo5co"]
+[ext_resource type="Texture2D" uid="uid://de42r4qctsuv3" path="res://sprites/items/axe_spr_0.png" id="5_0en4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnahv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yo5co")
+}],
+"loop": true,
+"name": &"apple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0en4s")
+}],
+"loop": true,
+"name": &"axe",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[node name="Inventory" type="Node2D"]
+process_mode = 3
+z_index = 4096
+z_as_relative = false
+script = ExtResource("1_o4u77")
+
+[node name="expand" type="Button" parent="."]
+offset_right = 86.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+toggle_mode = true
+text = "V"
+
+[node name="inv" type="Node2D" parent="."]
+position = Vector2(199, -15)
+scale = Vector2(2, 2)
+
+[node name="ColorRect" type="ColorRect" parent="inv"]
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 290.0
+offset_bottom = 271.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="slot0" type="Sprite2D" parent="inv"]
+position = Vector2(86, 76)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot0"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot0"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot1" type="Sprite2D" parent="inv"]
+position = Vector2(164, 76)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot1"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot1"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot2" type="Sprite2D" parent="inv"]
+position = Vector2(244, 76)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot2"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot2"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot3" type="Sprite2D" parent="inv"]
+position = Vector2(86, 153)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot3"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot3"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot4" type="Sprite2D" parent="inv"]
+position = Vector2(164, 153)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot4"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot4"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot5" type="Sprite2D" parent="inv"]
+position = Vector2(244, 153)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot5"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot5"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot6" type="Sprite2D" parent="inv"]
+position = Vector2(86, 228)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot6"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot6"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot7" type="Sprite2D" parent="inv"]
+position = Vector2(164, 228)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot7"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot7"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slot8" type="Sprite2D" parent="inv"]
+position = Vector2(244, 228)
+texture = ExtResource("3_jdqtc")
+
+[node name="item" type="AnimatedSprite2D" parent="inv/slot8"]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="count" type="Label" parent="inv/slot8"]
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 29.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="toggled" from="expand" to="." method="_on_expand_toggled"]

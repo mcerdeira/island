@@ -7,6 +7,8 @@ var MUSIC_ENABLED = true
 var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var shaker_obj = null
+var SLOTS = []
+var INV_Object = null
 
 var apple = {
 	"name": "apple",
@@ -27,8 +29,28 @@ var axe = {
 }
 
 func init_game():
+	for i in range(0, 9):
+		SLOTS.push_back({
+			"item": null,
+			"count": 0
+		})
 	ITEMS.push_back(apple)
 	ITEMS.push_back(axe)
+	
+func add_to_inventory(item):
+	var found = false
+	for slo in SLOTS:
+		if slo.item != null and slo.item.name == item.name:
+			slo.count += 1
+			found = true
+			return true
+	
+	if !found:
+		for slo in SLOTS:
+			if slo.item == null:
+				slo.item = item
+				slo.count += 1
+				return true
 
 func save_game():
 	pass

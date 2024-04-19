@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=10 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Shader" path="res://scenes/main.gdshader" id="2_82qdg"]
 [ext_resource type="PackedScene" uid="uid://evskswf05b50" path="res://scenes/player.tscn" id="3_jywvs"]
+[ext_resource type="PackedScene" uid="uid://bihkfvj5sat3q" path="res://scenes/inventory.tscn" id="3_teo65"]
 [ext_resource type="PackedScene" uid="uid://cn3u5uktqqu3t" path="res://scenes/level_lay_out.tscn" id="4_q3sux"]
 [ext_resource type="Script" path="res://scenes/Shaker.gd" id="4_vcv2r"]
 [ext_resource type="PackedScene" uid="uid://dv7vx5arqc14" path="res://scenes/Item.tscn" id="6_g8ocs"]
@@ -27,11 +28,8 @@ script = ExtResource("1_tvtda")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 79.0
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("3_teo65")]
+position = Vector2(16, 16)
 
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
@@ -57,7 +55,16 @@ script = ExtResource("4_vcv2r")
 _camera = NodePath("../Camera2D")
 
 [node name="Item" parent="." instance=ExtResource("6_g8ocs")]
-position = Vector2(508, 154)
+position = Vector2(351, 229)
 
 [node name="Item2" parent="." instance=ExtResource("6_g8ocs")]
-position = Vector2(797, 153)
+position = Vector2(838, 185)
+
+[node name="Item3" parent="." instance=ExtResource("6_g8ocs")]
+position = Vector2(632, 180)
+
+[node name="Item4" parent="." instance=ExtResource("6_g8ocs")]
+position = Vector2(275, 461)
+
+[node name="Item5" parent="." instance=ExtResource("6_g8ocs")]
+position = Vector2(645, 402)
