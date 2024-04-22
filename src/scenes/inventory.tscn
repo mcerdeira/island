@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bihkfvj5sat3q"]
+[gd_scene load_steps=14 format=3 uid="uid://bihkfvj5sat3q"]
 
 [ext_resource type="Script" path="res://scenes/inventory.gd" id="1_o4u77"]
 [ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="1_t3rb1"]
 [ext_resource type="Texture2D" uid="uid://c2tccrt86ly2u" path="res://sprites/craftslot.png" id="3_jdqtc"]
 [ext_resource type="Texture2D" uid="uid://cy1i7ba6bi4l4" path="res://sprites/items/apple_spr_0.png" id="4_yo5co"]
 [ext_resource type="Texture2D" uid="uid://de42r4qctsuv3" path="res://sprites/items/axe_spr_0.png" id="5_0en4s"]
+[ext_resource type="Script" path="res://scenes/me.gd" id="6_nyjrs"]
+[ext_resource type="Texture2D" uid="uid://r16t5dojw241" path="res://sprites/player/player_idle_spr_0.png" id="7_r5eo5"]
+[ext_resource type="Texture2D" uid="uid://d0qrt8femx2hq" path="res://sprites/player/foot.png" id="8_qx0tx"]
+[ext_resource type="Texture2D" uid="uid://cxqdnn8b5jfp2" path="res://sprites/player/hand.png" id="9_b8tmv"]
+[ext_resource type="Texture2D" uid="uid://dkl3erq7xuvyd" path="res://sprites/player_eyes_eat_spr_0.png" id="10_gx70s"]
+[ext_resource type="Texture2D" uid="uid://b77ncnki4yubf" path="res://sprites/player_eyes_spr_1.png" id="11_4fhus"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qnahv"]
 animations = [{
@@ -30,6 +36,41 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_7nso2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gx70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4fhus")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Inventory" type="Node2D"]
 process_mode = 3
 z_index = 4096
@@ -37,23 +78,34 @@ z_as_relative = false
 script = ExtResource("1_o4u77")
 
 [node name="expand" type="Button" parent="."]
-offset_right = 86.0
+offset_right = 182.0
 offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("1_t3rb1")
 toggle_mode = true
-text = "V"
+text = "inventory"
 
 [node name="inv" type="Node2D" parent="."]
-position = Vector2(199, -15)
+position = Vector2(538, 27)
 scale = Vector2(2, 2)
 
 [node name="ColorRect" type="ColorRect" parent="inv"]
-offset_left = 40.0
-offset_top = 38.0
-offset_right = 290.0
-offset_bottom = 271.0
+offset_left = -247.0
+offset_top = 14.0
+offset_right = 293.0
+offset_bottom = 270.0
 color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="inv"]
+offset_left = -243.0
+offset_top = 29.0
+offset_right = 297.0
+offset_bottom = 285.0
+color = Color(0, 0, 0, 0.752941)
+
+[node name="me" type="Node2D" parent="inv"]
+position = Vector2(-266, -3)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_nyjrs")
 
 [node name="slot0" type="Sprite2D" parent="inv"]
 position = Vector2(86, 76)
@@ -216,5 +268,51 @@ theme_override_fonts/font = ExtResource("1_t3rb1")
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="title" type="Label" parent="inv"]
+offset_left = 41.0
+offset_top = 21.0
+offset_right = 290.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("1_t3rb1")
+text = "INVENTORY"
+horizontal_alignment = 1
+
+[node name="player" type="Sprite2D" parent="inv"]
+position = Vector2(-128.5, 136.5)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_r5eo5")
+
+[node name="Foot" type="Sprite2D" parent="inv/player"]
+position = Vector2(-6.8, 10.8)
+scale = Vector2(1, 1)
+texture = ExtResource("8_qx0tx")
+offset = Vector2(-2.2, 2.2)
+
+[node name="Foot2" type="Sprite2D" parent="inv/player"]
+position = Vector2(6.16594, 10.4432)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("8_qx0tx")
+offset = Vector2(-2.83407, 2.55681)
+
+[node name="Hand" type="Sprite2D" parent="inv/player"]
+position = Vector2(-14, -6)
+scale = Vector2(1, 1)
+texture = ExtResource("9_b8tmv")
+offset = Vector2(-11.2, 6.6)
+
+[node name="Hand2" type="Sprite2D" parent="inv/player"]
+position = Vector2(14.4067, -6.29065)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("9_b8tmv")
+offset = Vector2(-11.5933, 6.89066)
+
+[node name="eyes" type="AnimatedSprite2D" parent="inv/player"]
+position = Vector2(-2.60001, -0.200005)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_7nso2")
+frame_progress = 0.277855
 
 [connection signal="toggled" from="expand" to="." method="_on_expand_toggled"]

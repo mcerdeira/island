@@ -8,13 +8,44 @@ var MUSIC_PLAYING = false
 var MainTheme = "res://music/Bone Yard Waltz - Loopable.ogg"
 var shaker_obj = null
 var SLOTS = []
+var LIMBS = []
 var INV_Object = null
+
+enum LimbType {
+	hand,
+	foot
+}
+
+enum LimbStyle {
+	normal,
+	prostetic,
+	mutant,
+}
+
+enum LimbEffects {
+	none,
+	venom,
+}
+
+enum LimbDamageTypes {
+	blunt,
+	pierce
+}
+
+var limb = {
+	"type": LimbType.hand,
+	"style": LimbStyle.normal,
+	"attack_power": 0,
+	"walk_speed": 0,
+	"effect": LimbEffects.none,
+	"damage_type": LimbDamageTypes.blunt,
+}
 
 var apple = {
 	"name": "apple",
 	"description": "Apple",
 	"long_description": "Tasty apple",
-	"price": 400,
+	"price": 0,
 	"type": "food",
 	"action": "Eat"
 }
@@ -23,7 +54,7 @@ var axe = {
 	"name": "axe",
 	"description": "Axe",
 	"long_description": "Sharp Axe",
-	"price": 400,
+	"price": 0,
 	"type": "weapon",
 	"action": "Equip"
 }

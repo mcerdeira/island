@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bveav6ctdlmbu"]
+[gd_scene load_steps=11 format=3 uid="uid://bveav6ctdlmbu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_tvtda"]
 [ext_resource type="Shader" path="res://scenes/main.gdshader" id="2_82qdg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cn3u5uktqqu3t" path="res://scenes/level_lay_out.tscn" id="4_q3sux"]
 [ext_resource type="Script" path="res://scenes/Shaker.gd" id="4_vcv2r"]
 [ext_resource type="PackedScene" uid="uid://dv7vx5arqc14" path="res://scenes/Item.tscn" id="6_g8ocs"]
+[ext_resource type="PackedScene" uid="uid://dvfssvwf3abu1" path="res://scenes/map.tscn" id="8_tvlx1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knga3"]
 shader = ExtResource("2_82qdg")
@@ -26,10 +27,10 @@ script = ExtResource("1_tvtda")
 
 [node name="LevelLayOut" parent="." instance=ExtResource("4_q3sux")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("3_teo65")]
+[node name="Inventory" parent="." instance=ExtResource("3_teo65")]
 position = Vector2(16, 16)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
@@ -68,3 +69,5 @@ position = Vector2(275, 461)
 
 [node name="Item5" parent="." instance=ExtResource("6_g8ocs")]
 position = Vector2(645, 402)
+
+[node name="Map" parent="." instance=ExtResource("8_tvlx1")]

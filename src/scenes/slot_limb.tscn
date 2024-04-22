@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2d6skf50wl4d"]
+
+[ext_resource type="Texture2D" uid="uid://c2tccrt86ly2u" path="res://sprites/craftslot.png" id="1_j3k32"]
+[ext_resource type="Script" path="res://scenes/slot_limb.gd" id="2_kkph1"]
+[ext_resource type="Texture2D" uid="uid://cy1i7ba6bi4l4" path="res://sprites/items/apple_spr_0.png" id="2_okhf1"]
+[ext_resource type="Texture2D" uid="uid://de42r4qctsuv3" path="res://sprites/items/axe_spr_0.png" id="3_36p22"]
+[ext_resource type="FontFile" uid="uid://cqp5o2vpb07yg" path="res://fonts/prstartk.ttf" id="4_pd6hx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnahv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_okhf1")
+}],
+"loop": true,
+"name": &"apple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_36p22")
+}],
+"loop": true,
+"name": &"axe",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[node name="slot_limb" type="Sprite2D"]
+position = Vector2(130, 290)
+texture = ExtResource("1_j3k32")
+script = ExtResource("2_kkph1")
+
+[node name="item" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qnahv")
+animation = &"empty"
+
+[node name="limb" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = -0.109375
+anchor_bottom = -0.109375
+offset_left = -31.0
+offset_top = -41.0
+offset_right = 1.0
+offset_bottom = -26.0
+theme_override_fonts/font = ExtResource("4_pd6hx")
+theme_override_font_sizes/font_size = 8
+text = "HAND"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
